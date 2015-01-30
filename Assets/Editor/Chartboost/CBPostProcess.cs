@@ -12,11 +12,6 @@ using UnityEditor.XCodeEditorChartboost;
 namespace ChartboostSDK {
 	public class ChartboostPostProcess : MonoBehaviour {
 		
-		[PostProcessBuild(-10)]
-		public static void OnPostProcessBuildCleanup(BuildTarget target, string path) {
-			CBCleanup.Clean();
-		}
-		
 		[PostProcessBuild(5000)]
 		public static void OnPostProcessBuild(BuildTarget target, string path) {
 			if(target == BuildTarget.iPhone && !EditorUserBuildSettings.appendProject) {
@@ -33,16 +28,12 @@ namespace ChartboostSDK {
 			UnityEditor.XCodeEditorChartboost.XCProject project = new UnityEditor.XCodeEditorChartboost.XCProject(path);
 
 			// Find and run through all projmods files to patch the project
-			string projModPath = System.IO.Path.Combine(Application.dataPath, "Chartboost/Editor");
+			string projModPath = System.IO.Path.Combine(Application.dataPath, "Editor/Chartboost");
 			var files = System.IO.Directory.GetFiles(projModPath, "*.projmods", System.IO.SearchOption.AllDirectories);
 			foreach(var file in files) {
 				project.ApplyMod(file);
 			}
 			project.Save();
 		}
-		
-		
-		
-		
 	}
 }

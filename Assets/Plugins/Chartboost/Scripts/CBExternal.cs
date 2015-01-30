@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 namespace ChartboostSDK {
 	public class CBExternal {
 		private static bool initialized = false;
-		private static string _logTag = "ChartboostSDK";
+		private static string _logTag = "ChartboostSDK:CBExternal:: ";
 
 		public static void Log(string message) {
 			if(Debug.isDebugBuild)
-				Debug.Log(_logTag + "/" + message);
+				MyDebug.Log(_logTag + "/" + message);
 		}
 
 		private static bool checkInitialized() {
@@ -559,6 +559,7 @@ namespace ChartboostSDK {
 		}
 		
 		
+
 
 
 

@@ -743,7 +743,6 @@ namespace ChartboostSDK {
 				if(CBExternal.onBackPressed()) {
 					// If so, return and ignore it
 					Debug.Log("chartboost is closing the visible impression");
-
 					return;
 				} else {
 					Debug.Log("Quit app - chartboost is closing the application");
@@ -823,7 +822,6 @@ namespace ChartboostSDK {
 		}
 
 		private void shouldDisplayInterstitialEvent(string location) {
-			Debug.Log("Display test");
 			bool shouldDisplayInterstitialResponse = true;
 			if(shouldDisplayInterstitial != null)
 				shouldDisplayInterstitialResponse = shouldDisplayInterstitial(CBLocation.locationFromName(location));

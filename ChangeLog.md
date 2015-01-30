@@ -3,6 +3,10 @@ Chartboost Unity SDK Demo project
 
 ##Change Log
 ============
+###v1.1.1
+- Minor Changes
+- Remove file `CBClean.cs`
+
 ###v1.1
 Preprocessor `TESTMODE_CHARTBOOST` used to display OnGUI buttons
 	- For final build remove 'TESTMODE_CHARTBOOST' from Unity Build setting
