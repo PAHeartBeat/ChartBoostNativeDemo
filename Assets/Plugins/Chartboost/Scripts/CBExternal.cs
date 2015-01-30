@@ -7,14 +7,14 @@ namespace ChartboostSDK {
 	public class CBExternal {
 		private static bool initialized = false;
 		private static string _logTag = "ChartboostSDK";
-		
-		public static void Log (string message) {
-			if(CBSettings.isLogging() && Debug.isDebugBuild)
+
+		public static void Log(string message) {
+			if(Debug.isDebugBuild)
 				Debug.Log(_logTag + "/" + message);
 		}
 
 		private static bool checkInitialized() {
-			if (initialized) {
+			if(initialized) {
 				return true;
 			} else {
 				Debug.LogError("The Chartboost SDK needs to be initialized before we can show any ads");
@@ -22,80 +22,72 @@ namespace ChartboostSDK {
 			}
 		}
 
-#if UNITY_EDITOR || (!UNITY_ANDROID && !UNITY_IPHONE)
+		#if UNITY_EDITOR || (!UNITY_ANDROID && !UNITY_IPHONE)
 
 		/// Initializes the Chartboost plugin.
-		/// This must be called before using any other Chartboost features.
-		public static void init() {
-			Log("Unity : init");
-			
-			// Will verify all the id and signatures against example ones.
-			CBSettings.getIOSAppId ();
-			CBSettings.getIOSAppSecret ();
-			CBSettings.getAndroidAppId ();
-			CBSettings.getAndroidAppSecret ();
-			CBSettings.getAmazonAppId ();
-			CBSettings.getAmazonAppSecret ();
+		/// This must be called before using any other Chartboost features. 
+		public static void init(string appID, string appSecret) {
+			Log("Unity : init appID: " + appID + " - appSecret: " + appSecret);
 		}
-		
+
 		/// Caches an interstitial. Location is optional.
 		public static void cacheInterstitial(CBLocation location) {
 			Log("Unity : cacheInterstitial at location = " + location.ToString());
 		}
-		
+
 		/// Checks for a cached an interstitial. Location is optional.
 		public static bool hasInterstitial(CBLocation location) {
 			Log("Unity : hasInterstitial at location = " + location.ToString());
 			return false;
 		}
-		
+
 		/// Loads an interstitial. Location is optional.
 		public static void showInterstitial(CBLocation location) {
 			Log("Unity : showInterstitial at location = " + location.ToString());
 		}
-		
+
 		/// Caches the more apps screen. Location is optional.
 		public static void cacheMoreApps(CBLocation location) {
 			Log("Unity : cacheMoreApps at location = " + location.ToString());
 		}
-		
+
 		/// Checks to see if the more apps screen is cached. Location is optional.
 		public static bool hasMoreApps(CBLocation location) {
 			Log("Unity : hasMoreApps at location = " + location.ToString());
 			return false;
 		}
-		
+
 		/// Shows the more apps screen. Location is optional.
 		public static void showMoreApps(CBLocation location) {
 			Log("Unity : showMoreApps at location = " + location.ToString());
 		}
-		
+
 		public static void cacheInPlay(CBLocation location) {
 			Log("Unity : cacheInPlay at location = " + location.ToString());
 		}
-		
+
 		public static bool hasInPlay(CBLocation location) {
 			Log("Unity : hasInPlay at location = " + location.ToString());
 			return false;
 		}
-		
+
 		public static CBInPlay getInPlay(CBLocation location) {
 			Log("Unity : getInPlay at location = " + location.ToString());
 			return null;
 		}
-		
+
 		/// Caches a rewarded video. Location is optional.
 		public static void cacheRewardedVideo(CBLocation location) {
 			Log("Unity : cacheRewardedVideo at location = " + location.ToString());
 		}
-		
+
 		
 		/// Checks for a cached a rewarded video. Location is optional.
 		public static bool hasRewardedVideo(CBLocation location) {
 			Log("Unity : hasRewardedVideo at location = " + location.ToString());
 			return false;
 		}
-		
+
 		/// Loads a rewarded video. Location is optional.
 		public static void showRewardedVideo(CBLocation location) {
 			Log("Unity : showRewardedVideo at location = " + location.ToString());
@@ -115,71 +107,71 @@ namespace ChartboostSDK {
 		public static void chartBoostShouldDisplayMoreAppsCallbackResult(bool result) {
 			Log("Unity : chartBoostShouldDisplayMoreAppsCallbackResult");
 		}
-		
+
 		/// Sets the name of the game object to be used by the Chartboost iOS SDK
 		public static void setGameObjectName(string name) {
 			Log("Unity : Set Game object name for callbacks to = " + name);
 		}
-		
+
 		/// Set the custom id used for rewarded video call
 		public static void setCustomId(string id) {
 			Log("Unity : setCustomId to = " + id);
 		}
-		
+
 		/// Get the custom id used for rewarded video call
 		public static string getCustomId() {
 			Log("Unity : getCustomId");
 			return "";
 		}
-		
+
 		/// Confirm if an age gate passed or failed. When specified
 		/// Chartboost will wait for this call before showing the ios app store
 		public static void didPassAgeGate(bool pass) {
 			Log("Unity : didPassAgeGate with value = " + pass);
 		}
-		
+
 		/// Open a URL using a Chartboost Custom Scheme
 		public static void handleOpenURL(string url, string sourceApp) {
 			Log("Unity : handleOpenURL at url = " + url + " for app = " + sourceApp);
 		}
-		
+
 		/// Set to true if you would like to implement confirmation for ad clicks, such as an age gate.
 		/// If using this feature, you should call CBBinding.didPassAgeGate() in your didClickInterstitial.
 		public static void setShouldPauseClickForConfirmation(bool pause) {
 			Log("Unity : setShouldPauseClickForConfirmation with value = " + pause);
 		}
-		
+
 		/// Set to false if you want interstitials to be disabled in the first user session
 		public static void setShouldRequestInterstitialsInFirstSession(bool request) {
 			Log("Unity : setShouldRequestInterstitialsInFirstSession with value = " + request);
 		}
-		
+
 		public static bool getAutoCacheAds() {
 			Log("Unity : getAutoCacheAds");
 			return false;
 		}
-		
+
 		public static void setAutoCacheAds(bool autoCacheAds) {
 			Log("Unity : setAutoCacheAds with value = " + autoCacheAds);
 		}
-		
+
 		public static void setShouldDisplayLoadingViewForMoreApps(bool shouldDisplay) {
 			Log("Unity : setShouldDisplayLoadingViewForMoreApps with value = " + shouldDisplay);
 		}
-		
+
 		public static void setShouldPrefetchVideoContent(bool shouldPrefetch) {
 			Log("Unity : setShouldPrefetchVideoContent with value = " + shouldPrefetch);
 		}
-		
+
 		public static void pause(bool paused) {
 			Log("Unity : pause");
 		}
-		
+
 		/// Shuts down the Chartboost plugin
 		public static void destroy() {
 			Log("Unity : destroy");
 		}
-		
+
 		/// Used to notify Chartboost that the Android back button has been pressed
 		/// Returns true to indicate that Chartboost has handled the event and it should not be further processed
 		public static bool onBackPressed() {
@@ -187,15 +179,35 @@ namespace ChartboostSDK {
 			return true;
 		}
 
-		public static void trackInAppGooglePlayPurchaseEvent(string title, string description, string price, string currency, string productID, string purchaseData, string purchaseSignature) {
+		public static void trackInAppGooglePlayPurchaseEvent(
+			string title,
+			string description,
+			string price,
+			string currency,
+			string productID,
+			string purchaseData,
+			string purchaseSignature) {
 			Log("Unity: trackInAppGooglePlayPurchaseEvent");
 		}
-		
-		public static void trackInAppAmazonStorePurchaseEvent(string title, string description, string price, string currency, string productID, string userID, string purchaseToken) {
+
+		public static void trackInAppAmazonStorePurchaseEvent(
+			string title,
+			string description,
+			string price,
+			string currency,
+			string productID,
+			string userID,
+			string purchaseToken) {
 			Log("Unity: trackInAppAmazonStorePurchaseEvent");
 		}
-		
-		public static void trackInAppAppleStorePurchaseEvent(string receipt, string productTitle, string productDescription, string productPrice, string productCurrency, string productIdentifier) {
+
+		public static void trackInAppAppleStorePurchaseEvent(
+			string receipt,
+			string productTitle,
+			string productDescription,
+			string productPrice,
+			string productCurrency,
+			string productIdentifier) {
 			Log("Unity : trackInAppAppleStorePurchaseEvent");
 		}
 
@@ -204,7 +216,7 @@ namespace ChartboostSDK {
 			return false;
 		}
 		
-#elif UNITY_IPHONE
+		#elif UNITY_IPHONE
 		[DllImport("__Internal")]
 		private static extern void _chartBoostInit(string appId, string appSignature);
 		[DllImport("__Internal")]
@@ -266,11 +278,8 @@ namespace ChartboostSDK {
 		
 		/// Initializes the Chartboost plugin.
 		/// This must be called before using any other Chartboost features.
-		public static void init() {
+		public static void init(string appID, string appSecret) {
 			// get the AppID and AppSecret from CBSettings
-			string appID = CBSettings.getIOSAppId ();
-			string appSecret = CBSettings.getIOSAppSecret ();
-			
 			if (Application.platform == RuntimePlatform.IPhonePlayer)
 				_chartBoostInit(appID, appSecret);
 			initialized = true;
@@ -550,15 +559,20 @@ namespace ChartboostSDK {
 		}
 		
 		
+
+
+
+
+
+
+
+
+
 #elif UNITY_ANDROID
 		private static AndroidJavaObject _plugin;
 		
 		/// Initialize the android sdk
-		public static void init() {
-			// get the AppID and AppSecret from CBSettings
-			string appID = CBSettings.getSelectAndroidAppId ();
-			string appSecret = CBSettings.getSelectAndroidAppSecret ();
-			
+		public static void init(string appID, string appSecret) {
 			// find the plugin instance
 			using (var pluginClass = new AndroidJavaClass("com.chartboost.sdk.unity.CBPlugin"))
 				_plugin = pluginClass.CallStatic<AndroidJavaObject>("instance");
