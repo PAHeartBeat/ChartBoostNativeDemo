@@ -1,9 +1,9 @@
 # ChartBoostNativeDemo
 The Unity Source code is Made for test Chartboost own Unity3D SDK
 
-* Modified: Jan 29th, 2015
+* Modified: Feb 05th, 2015
 * Chartboost Unity SDK v5.1.1
-* Current Package: v1.1
+* Current Package: v1.1.2
 * Please Check `ChangeLog.md`
 
 ##Test On

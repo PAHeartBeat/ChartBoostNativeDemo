@@ -11,7 +11,7 @@ Library/*
 # Target Build Files #
 # ================== #
 *.apk
-XCode*
+/XCode*
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -38,3 +38,9 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# =================== #
+# Developer generated #
+# =================== #
+!Assets/*
+!ProjectSettings/*

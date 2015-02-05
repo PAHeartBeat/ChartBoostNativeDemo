@@ -3,6 +3,9 @@ Chartboost Unity SDK Demo project
 
 ##Change Log
 ============
+###v1.1.2
+- Update .gitignore due to last git ignore not support `XCode` folder in assets folder, due to this Chartboost's Post-process files are not included for iOS Platform and not able to build Project (after that change in `.gitingore` more 12-13 files are added in git repo)
+
 ###v1.1.1
 - Minor Changes
 - Remove file `CBClean.cs`
